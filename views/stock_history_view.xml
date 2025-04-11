@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_history_search2" model="ir.ui.view">
+        <field name="name">stock.history.search2</field>
+        <field name="model">stock.history.view</field>
+        <field name="arch" type="xml">
+            <search string="Stock History">
+                <field name="date"/>
+                <group expand="0" string="Group By">
+                    <filter string="By products" name="groupby_product_template_id" domain="[]" context="{'group_by':'product_template_id'}"/>
+                    <filter string="Date" name="groupby_date" domain="[]" context="{'group_by':'date'}"/>
+                    <filter string="Category" name="groupby_category" domain="[]" context="{'group_by':'categ_id'}"/>
+                    <filter string="UOM" name="groupby_uom" domain="[]" context="{'group_by':'uom_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="stock_history_pivot_view2" model="ir.ui.view">
+        <field name="name">view_pivot_stock_history2</field>
+        <field name="model">stock.history.view</field>
+        <field name="arch" type="xml">
+            <pivot string="Stock">
+                <field string="Date" name="date" interval="month" type="col"/>
+                <field string="Input" name="income" type='measure'/>
+                <field string="Output" name="outcome" type='measure'/>
+                <field string="Stock Quantity UOM" name="qty" type='measure'/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="stock_history_graph_view2" model="ir.ui.view">
+        <field name="name">view_graph_stock_history2</field>
+        <field name="model">stock.history.view</field>
+        <field name="arch" type="xml">
+            <graph string="Stock" type='bar'>
+                <field string="Date" name="date" type='col'/>
+                <field string="Quantity" name="qty" type='measure'/>
+            </graph>
+        </field>
+    </record>
+
+
+
+    <record id='stock_history_tree_view2' model='ir.ui.view'>
+        <field name="name">stock.history.tree.view2</field>
+        <field name="model">stock.history.view</field>
+        <field name="arch" type="xml">
+            <tree string="stock history">
+                <field name="date"/>
+                <field name="product_template_id"/>
+                <field name="categ_id"/>
+                <field name="uom_id"/>
+                <field name="income"/>
+                <field name="outcome"/>
+                <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_stock_history_graph2" model="ir.actions.act_window">
+        <field name="name">stock history</field>
+        <field name="res_model">stock.history.view</field>
+        <field name="view_mode">graph,tree,pivot</field>
+        <field name="context">{'graph_mode':'bar'}</field>
+    </record>
+
+    <record id="action_stock_history_tree2" model="ir.actions.act_window">
+        <field name="name">stock history</field>
+        <field name="res_model">stock.history.view</field>
+        <field name="view_mode">tree,pivot,graph</field>
+    </record>
+
+
+</odoo>
