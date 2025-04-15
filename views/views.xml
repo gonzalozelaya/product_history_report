@@ -8,7 +8,7 @@
 		<field name="arch" type="xml">
 			<button name= "action_view_stock_move_lines" position="after">
 
-				<button string="Stock History" type="object"
+				<button string="Historial de movimientos" type="object"
                             name= "action_open_stock_history"
                             class="oe_stat_button" icon="fa-signal"/>
 			</button>
