@@ -53,9 +53,10 @@
                 <field name="product_template_id"/>
                 <field name="categ_id"/>
                 <field name="uom_id"/>
-                <field name="income"/>
-                <field name="outcome"/>
-                <field name="qty"/>
+                <field name="income" sum="Total Entradas"/>
+                <field name="outcome"  sum="Total Salidas"/>
+                <field name="qty" sum="Total"/>
+                <field name="cumulative_balance"/>
                 <button name="action_view_move_lines" 
                     string="Ver Movimientos" 
                     type="object" 
